@@ -22,9 +22,26 @@ app.get('/cards', async (req, res) => {
 
 app.post('/interpret', async (req, res) => {
   try {
+    const spread = {
+      past: 'Ace of cups',
+      present: 'Seven of wands',
+      future: 'Strength',
+    };
+
+    const prompt = `
+    Perform a tarot reading using a three-card spread: Past, Present, and Future.
+    
+    - Past: ${spread.past}
+    - Present: ${spread.present}
+    - Future: ${spread.future}
+
+    Interpret each card in the context of its position. 
+    Tell a cohesive story instead of just reading card meanings.
+  `;
+
     const response = await openai.responses.create({
       model: 'gpt-4.1-nano',
-      input: 'Please tell me a one sentence bedtime story about a unicorn.',
+      input: prompt,
     });
 
     console.log(response);
