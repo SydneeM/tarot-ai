@@ -1,16 +1,16 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import OpenAI from 'openai';
 import 'dotenv/config';
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
   res.send('Hello World!');
 });
 
-app.get('/cards', async (req, res) => {
+app.get('/cards', async (req: Request, res: Response) => {
   try {
     const response = await fetch('https://tarotapi.dev/api/v1/cards');
     const data = await response.json();
@@ -20,7 +20,7 @@ app.get('/cards', async (req, res) => {
   }
 });
 
-app.post('/interpret', async (req, res) => {
+app.post('/interpret', async (req: Request, res: Response) => {
   try {
     const spread = {
       past: 'Ace of cups',
