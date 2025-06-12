@@ -1,9 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import viteLogo from '/vite.svg';
 import reactLogo from './assets/react.svg';
 
 function App() {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const getData = async () => {
+      const response = await fetch('/api/cards');
+      const data = await response.json();
+      console.log(data);
+    };
+
+    getData();
+  }, []);
 
   return (
     <>
