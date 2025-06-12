@@ -6,7 +6,7 @@
     "build": "tsc",
     "start": "node dist/app.js",
     "dev": "nodemon --watch '**/*.ts' --exec 'ts-node' app.ts",
-    "check": "biome check --apply ."
+    "check": "biome check --write ."
   },
   "keywords": [],
   "author": "",
