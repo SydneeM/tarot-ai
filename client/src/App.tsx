@@ -17,10 +17,14 @@ function App() {
   }, []);
 
   return (
-    <div className="h-screen flex flex-row justify-between items-center mx-20">
-      <CardContainer cards={cards.filter((card) => card.type === 'major')} />
-      <Spread />
-      <CardContainer cards={cards.filter((card) => card.type === 'minor')} />
+    <div className="flex flex-col h-screen items-center justify-around">
+      <span>Tarot AI</span>
+      <div className="flex flex-row justify-around w-full h-[50%]">
+        <CardContainer cards={cards.filter((card) => card.type === 'major')} />
+        <Spread />
+        <CardContainer cards={cards.filter((card) => card.type === 'minor')} />
+      </div>
+      <div className="">TBD Card Spreads</div>
     </div>
   );
 }
