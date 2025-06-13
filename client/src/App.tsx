@@ -1,14 +1,16 @@
 import type { Card } from '@shared/types';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import CardContainer from './components/CardContainer';
 import Spread from './components/Spread';
 
 function App() {
+  const [cards, setCards] = useState<Card[]>([]);
+
   useEffect(() => {
     const getData = async () => {
       const response = await fetch('/api/cards');
       const data: Card[] = await response.json();
-      console.log(data);
+      setCards(data);
     };
 
     getData();
@@ -16,9 +18,9 @@ function App() {
 
   return (
     <div className="h-screen flex flex-row justify-between items-center mx-20">
-      <CardContainer />
+      <CardContainer cards={cards.filter((card) => card.type === 'major')} />
       <Spread />
-      <CardContainer />
+      <CardContainer cards={cards.filter((card) => card.type === 'minor')} />
     </div>
   );
 }
