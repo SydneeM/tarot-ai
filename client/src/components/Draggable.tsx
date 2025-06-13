@@ -1,4 +1,5 @@
 import { useDraggable } from '@dnd-kit/core';
+import { CSS } from '@dnd-kit/utilities';
 import type React from 'react';
 
 interface DraggableItemProps {
@@ -7,12 +8,17 @@ interface DraggableItemProps {
 }
 
 function Draggable({ id, children }: DraggableItemProps) {
-  const { attributes, listeners, setNodeRef } = useDraggable({
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
     id: id,
   });
 
+  const style = {
+    // Outputs `translate3d(x, y, 0)`
+    transform: CSS.Translate.toString(transform),
+  };
+
   return (
-    <button ref={setNodeRef} {...listeners} {...attributes}>
+    <button ref={setNodeRef} style={style} {...listeners} {...attributes}>
       {children}
     </button>
   );
