@@ -1,7 +1,7 @@
-import express, { Request, Response } from 'express';
+import express, { type Request, type Response } from 'express';
 import OpenAI from 'openai';
 import 'dotenv/config';
-import { Card, CardData } from '@shared/types';
+import { Card, type CardData } from '@shared/types';
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,7 +15,7 @@ app.get('/cards', async (_req: Request, res: Response) => {
   try {
     const response = await fetch('https://tarotapi.dev/api/v1/cards');
     const data: CardData = await response.json();
-    res.send(data);
+    res.send(data.cards);
   } catch {
     res.status(500).json({ error: 'Failed to fetch data' });
   }

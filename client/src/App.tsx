@@ -1,3 +1,4 @@
+import type { Card } from '@shared/types';
 import { useEffect } from 'react';
 import CardContainer from './components/CardContainer';
 import Spread from './components/Spread';
@@ -6,7 +7,7 @@ function App() {
   useEffect(() => {
     const getData = async () => {
       const response = await fetch('/api/cards');
-      const data = await response.json();
+      const data: Card[] = await response.json();
       console.log(data);
     };
 
