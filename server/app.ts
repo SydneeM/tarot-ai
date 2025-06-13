@@ -1,7 +1,7 @@
 import express, { type Request, type Response } from 'express';
 import OpenAI from 'openai';
 import 'dotenv/config';
-import { Card, type CardData } from '@shared/types';
+import { type CardData } from '@shared/types';
 
 const app = express();
 const port = process.env.PORT || 3000;
