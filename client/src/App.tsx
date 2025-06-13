@@ -2,6 +2,7 @@ import type { Card } from '@shared/types';
 import { useEffect, useState } from 'react';
 import CardContainer from './components/CardContainer';
 import Spread from './components/Spread';
+import SpreadOptions from './components/SpreadOptions';
 
 function App() {
   const [cards, setCards] = useState<Card[]>([]);
@@ -24,7 +25,7 @@ function App() {
         <Spread />
         <CardContainer cards={cards.filter((card) => card.type === 'minor')} />
       </div>
-      <div className="">TBD Card Spreads</div>
+      <SpreadOptions />
     </div>
   );
 }
