@@ -1,26 +1,27 @@
 import express, { Request, Response } from 'express';
 import OpenAI from 'openai';
 import 'dotenv/config';
+import { Card, CardData } from '@shared/types';
 
 const app = express();
 const port = process.env.PORT || 3000;
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
-app.get('/', (req: Request, res: Response) => {
+app.get('/', (_req: Request, res: Response) => {
   res.send('Hello World!');
 });
 
-app.get('/cards', async (req: Request, res: Response) => {
+app.get('/cards', async (_req: Request, res: Response) => {
   try {
     const response = await fetch('https://tarotapi.dev/api/v1/cards');
-    const data = await response.json();
+    const data: CardData = await response.json();
     res.send(data);
   } catch {
     res.status(500).json({ error: 'Failed to fetch data' });
   }
 });
 
-app.post('/interpret', async (req: Request, res: Response) => {
+app.post('/interpret', async (_req: Request, res: Response) => {
   try {
     const spread = {
       past: 'Ace of cups',
@@ -35,7 +36,7 @@ app.post('/interpret', async (req: Request, res: Response) => {
     - Present: ${spread.present}
     - Future: ${spread.future}
 
-    Interpret each card in the context of its position. 
+    Interpret each card in the context of its position using the provided card names and meanings. 
     Tell a cohesive story instead of just reading card meanings.
   `;
 
