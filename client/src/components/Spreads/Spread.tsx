@@ -1,4 +1,5 @@
 import type { Card } from '@shared/types';
+import OneCard from './OneCard';
 import ThreeCard from './ThreeCard';
 
 interface SpreadProps {
@@ -9,6 +10,7 @@ interface SpreadProps {
 function Spread({ type, dropZones }: SpreadProps) {
   return (
     <div className="flex">
+      {type === 'oneCard' && <OneCard chosen={dropZones.oneCardChosen} />}
       {type === 'threeCard' && (
         <ThreeCard
           past={dropZones.threeCardPast}
