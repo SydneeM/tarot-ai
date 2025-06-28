@@ -15,7 +15,7 @@ function TwoCardCross({ situation, challenge }: TwoCardCrossProps) {
       </Droppable>
       <Droppable
         id="twoCardChallenge"
-        className="flex flex-col w-60 border-1 absolute z-20 -rotate-90 h-full"
+        className="flex flex-col w-60 border-1 absolute z-20 -rotate-90 h-full bg-[#242424]"
       >
         {challenge && <Draggable id={challenge.name}>{challenge.name}</Draggable>}
       </Droppable>

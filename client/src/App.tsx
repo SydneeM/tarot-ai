@@ -129,7 +129,7 @@ function App() {
           <CardContainer cards={dropZones.minor} dropZoneId="minor" />
           <DragOverlay>
             {activeCard ? (
-              <div className="flex flex-col justify-center items-center text-center text-white bg-[#1a1a1a] border border-gray-700 p-3 opacity-75">
+              <div className="flex flex-col justify-center items-center text-center text-white bg-[#1a1a1a] border border-gray-700 p-3 opacity-75 w-fit">
                 {activeCard.name}
               </div>
             ) : null}
