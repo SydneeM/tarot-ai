@@ -1,14 +1,14 @@
 import type { Card } from '@shared/types';
-import Draggable from './Draggable';
-import Droppable from './Droppable';
+import Draggable from '../Draggable';
+import Droppable from '../Droppable';
 
-interface SpreadProps {
+interface ThreeCardProps {
   past: Card[];
   present: Card[];
   future: Card[];
 }
 
-function Spread({ past, present, future }: SpreadProps) {
+function ThreeCard({ past, present, future }: ThreeCardProps) {
   return (
     <div className="flex flex-row gap-x-4">
       <Droppable id="threeCardPast" className="flex flex-col w-60 border-1">
@@ -36,4 +36,4 @@ function Spread({ past, present, future }: SpreadProps) {
   );
 }
 
-export default Spread;
+export default ThreeCard;

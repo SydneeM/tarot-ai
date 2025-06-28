@@ -8,50 +8,53 @@ import {
 import type { Card } from '@shared/types';
 import { useEffect, useState } from 'react';
 import CardContainer from './components/CardContainer';
-import Spread from './components/Spread';
 import SpreadOptions from './components/SpreadOptions';
+import Spread from './components/Spreads/Spread';
 
-const dropZoneIds = ['major', 'minor', 'threeCardPast', 'threeCardPresent', 'threeCardFuture'];
+const SpreadCardsMap = new Map<string, string[]>([
+  ['oneCard', ['major', 'minor', 'oneCardChosen']],
+  ['threeCard', ['major', 'minor', 'threeCardPast', 'threeCardPresent', 'threeCardFuture']],
+]);
+
+const updateDropZones = (cards: Card[], zones: string[]) => {
+  const result: Record<string, Card[]> = {};
+  for (const zone of zones) {
+    if (zone === 'major') {
+      result[zone] = cards.filter((card) => card.type === 'major');
+    } else if (zone === 'minor') {
+      result[zone] = cards.filter((card) => card.type === 'minor');
+    } else {
+      result[zone] = [];
+    }
+  }
+  return result;
+};
+
+const updateRestrictions = (myCards: Card[], zones: string[]) => {
+  const result: Record<string, string[]> = {};
+  for (const card of myCards) {
+    result[card.name] = [card.type, ...zones];
+  }
+  return result;
+};
 
 function App() {
   const [cards, setCards] = useState<Card[]>([]);
   const [activeCard, setActiveCard] = useState<Card | null>(null);
-  const [dropZones, setDropZones] = useState<Record<string, Card[]>>({
-    major: [],
-    minor: [],
-    threeCardPast: [],
-    threeCardPresent: [],
-    threeCardFuture: [],
-  });
-
+  const [spreadType, setSpreadType] = useState<string>('');
+  const [dropZoneIds, setDropZoneIds] = useState<string[]>([]);
+  const [dropZones, setDropZones] = useState<Record<string, Card[]>>({});
   const [restrictions, setRestrictions] = useState<Record<string, string[]>>({});
 
   useEffect(() => {
-    const initializeRestrictions = (myCards: Card[], zones: string[]) => {
-      const result: Record<string, string[]> = {};
-      for (const card of myCards) {
-        result[card.name] = [card.type, ...zones];
-      }
-      return result;
-    };
-
-    const getData = async () => {
+    const initialize = async () => {
       const response = await fetch('/api/cards');
       const data: Card[] = await response.json();
       setCards(data);
-      setDropZones({
-        major: data.filter((card) => card.type === 'major'),
-        minor: data.filter((card) => card.type === 'minor'),
-        threeCardPast: [],
-        threeCardPresent: [],
-        threeCardFuture: [],
-      });
-      setRestrictions(
-        initializeRestrictions(data, ['threeCardPast', 'threeCardPresent', 'threeCardFuture'])
-      );
+      setDropZones(updateDropZones(data, ['major', 'minor']));
     };
 
-    getData();
+    initialize();
   }, []);
 
   const handleDragStart = (event: DragStartEvent) => {
@@ -61,7 +64,6 @@ function App() {
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
-
     if (!over) {
       return;
     }
@@ -69,12 +71,10 @@ function App() {
     const activeId = String(active.id);
     const overId = String(over.id);
     const allowedDrops = restrictions[activeId];
-    
     if (!allowedDrops.includes(overId)) {
       return;
     }
-
-    if (overId !== "major" && overId !== "minor" && dropZones[overId].length > 0){
+    if (overId !== 'major' && overId !== 'minor' && dropZones[overId].length > 0) {
       return;
     }
 
@@ -97,6 +97,23 @@ function App() {
     });
   };
 
+  const handleSpreadClick = (type: string) => {
+    const zones = SpreadCardsMap.get(type);
+    if (zones) {
+      setSpreadType(type);
+      setDropZoneIds(zones);
+      setDropZones(updateDropZones(cards, zones));
+      setRestrictions(
+        updateRestrictions(
+          cards,
+          zones.filter((zone) => zone !== 'major' && zone !== 'minor')
+        )
+      );
+    } else {
+      console.log('Invalid spread');
+    }
+  };
+
   return (
     <div className="flex flex-col h-screen items-center justify-around">
       <span>Tarot AI</span>
@@ -107,11 +124,7 @@ function App() {
           onDragEnd={handleDragEnd}
         >
           <CardContainer cards={dropZones.major} dropZoneId="major" />
-          <Spread
-            past={dropZones.threeCardPast}
-            present={dropZones.threeCardPresent}
-            future={dropZones.threeCardFuture}
-          />
+          <Spread type={spreadType} dropZones={dropZones} />
           <CardContainer cards={dropZones.minor} dropZoneId="minor" />
           <DragOverlay>
             {activeCard ? (
@@ -122,7 +135,7 @@ function App() {
           </DragOverlay>
         </DndContext>
       </div>
-      <SpreadOptions />
+      <SpreadOptions handleSpreadClick={handleSpreadClick} />
     </div>
   );
 }

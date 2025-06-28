@@ -1,10 +1,21 @@
-const spreads = ['One Card', 'Two Card', 'Three Card', 'Horseshoe', 'Celtic Cross'];
+const spreads = [
+  { type: 'oneCard', name: 'One Card' },
+  { type: 'threeCard', name: 'Three Card' },
+  { type: 'horseShoe', name: 'Horseshoe' },
+  { type: 'celticCross', name: 'Celtic Cross' },
+];
 
-function SpreadOptions() {
+interface SpreadOptionsProps {
+  handleSpreadClick: (type: string) => void;
+}
+
+function SpreadOptions({ handleSpreadClick }: SpreadOptionsProps) {
   return (
     <div className="flex flex-row justify-around w-[50%] border-1">
       {spreads.map((spread) => (
-        <span key={spread}>{spread}</span>
+        <button type="button" key={spread.type} onClick={() => handleSpreadClick(spread.type)}>
+          {spread.name}
+        </button>
       ))}
     </div>
   );
