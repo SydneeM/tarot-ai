@@ -10,12 +10,12 @@ interface SpreadProps {
 function Spread({ type, dropZones }: SpreadProps) {
   return (
     <div className="col-span-3">
-      {type === 'oneCard' && <OneCard chosen={dropZones.oneCardChosen} />}
+      {type === 'oneCard' && <OneCard chosen={dropZones.oneCardChosen[0]} />}
       {type === 'threeCard' && (
         <ThreeCard
-          past={dropZones.threeCardPast}
-          present={dropZones.threeCardPresent}
-          future={dropZones.threeCardFuture}
+          past={dropZones.threeCardPast[0]}
+          present={dropZones.threeCardPresent[0]}
+          future={dropZones.threeCardFuture[0]}
         />
       )}
     </div>
