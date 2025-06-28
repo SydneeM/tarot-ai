@@ -15,6 +15,20 @@ const SpreadCardsMap = new Map<string, string[]>([
   ['oneCard', ['major', 'minor', 'oneCardChosen']],
   ['twoCardCross', ['major', 'minor', 'twoCardSituation', 'twoCardChallenge']],
   ['threeCard', ['major', 'minor', 'threeCardPast', 'threeCardPresent', 'threeCardFuture']],
+  [
+    'horseShoe',
+    [
+      'major',
+      'minor',
+      'horseShoePast',
+      'horseShoePresent',
+      'horseShoeInfluence',
+      'horseShoeQuerent',
+      'horseShoeOthers',
+      'horseShoeAdvice',
+      'horseShoeOutcome',
+    ],
+  ],
 ]);
 
 const updateDropZones = (cards: Card[], zones: string[]) => {

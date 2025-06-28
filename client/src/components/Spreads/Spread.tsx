@@ -1,4 +1,5 @@
 import type { Card } from '@shared/types';
+import HorseShoe from './HorseShoe';
 import OneCard from './OneCard';
 import ThreeCard from './ThreeCard';
 import TwoCardCross from './TwoCard';
@@ -23,6 +24,17 @@ function Spread({ type, dropZones }: SpreadProps) {
           past={dropZones.threeCardPast[0]}
           present={dropZones.threeCardPresent[0]}
           future={dropZones.threeCardFuture[0]}
+        />
+      )}
+      {type === 'horseShoe' && (
+        <HorseShoe
+          past={dropZones.horseShoePast[0]}
+          present={dropZones.horseShoePresent[0]}
+          influence={dropZones.horseShoeInfluence[0]}
+          querent={dropZones.horseShoeQuerent[0]}
+          others={dropZones.horseShoeOthers[0]}
+          advice={dropZones.horseShoeAdvice[0]}
+          outcome={dropZones.horseShoeOutcome[0]}
         />
       )}
     </div>
