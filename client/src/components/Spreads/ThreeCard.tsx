@@ -10,7 +10,7 @@ interface ThreeCardProps {
 
 function ThreeCard({ past, present, future }: ThreeCardProps) {
   return (
-    <div className="flex flex-row gap-x-4">
+    <div className="flex flex-row justify-evenly h-full">
       <Droppable id="threeCardPast" className="flex flex-col w-60 border-1">
         {past.map((card) => (
           <Draggable key={card.name} id={card.name}>

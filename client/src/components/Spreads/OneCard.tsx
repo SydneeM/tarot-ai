@@ -8,13 +8,15 @@ interface OneCardProps {
 
 function OneCard({ chosen }: OneCardProps) {
   return (
-    <Droppable id="oneCardChosen" className="flex flex-col w-60 border-1">
-      {chosen.map((card) => (
-        <Draggable key={card.name} id={card.name}>
-          {card.name}
-        </Draggable>
-      ))}
-    </Droppable>
+    <div className="flex flex-row justify-evenly h-full">
+      <Droppable id="oneCardChosen" className="flex flex-col w-60 border-1">
+        {chosen.map((card) => (
+          <Draggable key={card.name} id={card.name}>
+            {card.name}
+          </Draggable>
+        ))}
+      </Droppable>
+    </div>
   );
 }
 

@@ -9,7 +9,7 @@ interface SpreadProps {
 
 function Spread({ type, dropZones }: SpreadProps) {
   return (
-    <div className="flex">
+    <div className="col-span-3">
       {type === 'oneCard' && <OneCard chosen={dropZones.oneCardChosen} />}
       {type === 'threeCard' && (
         <ThreeCard

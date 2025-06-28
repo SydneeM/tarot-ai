@@ -117,7 +117,7 @@ function App() {
   return (
     <div className="flex flex-col h-screen items-center justify-around">
       <span>Tarot AI</span>
-      <div className="flex flex-row justify-around w-full h-[50%]">
+      <div className="grid grid-cols-5 gap-4 h-[50%]">
         <DndContext
           collisionDetection={closestCenter}
           onDragStart={handleDragStart}
