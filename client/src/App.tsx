@@ -68,9 +68,13 @@ function App() {
 
     const activeId = String(active.id);
     const overId = String(over.id);
-
     const allowedDrops = restrictions[activeId];
+    
     if (!allowedDrops.includes(overId)) {
+      return;
+    }
+
+    if (overId !== "major" && overId !== "minor" && dropZones[overId].length > 0){
       return;
     }
 
@@ -111,7 +115,7 @@ function App() {
           <CardContainer cards={dropZones.minor} dropZoneId="minor" />
           <DragOverlay>
             {activeCard ? (
-              <div className="p-3 bg-[#1a1a1a] text-white text-center border-1 border-gray-700">
+              <div className="flex flex-col justify-center items-center text-center text-white bg-[#1a1a1a] border border-gray-700 h-full">
                 {activeCard.name}
               </div>
             ) : null}
