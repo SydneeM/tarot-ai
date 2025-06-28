@@ -3,15 +3,16 @@ import { useDroppable } from '@dnd-kit/core';
 interface DroppableItemProps {
   id: string;
   children: React.ReactNode;
+  className?: string;
 }
 
-function Droppable({ id, children }: DroppableItemProps) {
+function Droppable({ id, children, className }: DroppableItemProps) {
   const { setNodeRef } = useDroppable({
     id: id,
   });
 
   return (
-    <div ref={setNodeRef} className="w-50 border-1">
+    <div ref={setNodeRef} className={`${className ? className : ''}`}>
       {children}
     </div>
   );

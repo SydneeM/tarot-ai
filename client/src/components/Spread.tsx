@@ -1,28 +1,39 @@
-import { DndContext } from '@dnd-kit/core';
-import type { DragEndEvent, UniqueIdentifier } from '@dnd-kit/core';
-import { useState } from 'react';
+import type { Card } from '@shared/types';
 import Draggable from './Draggable';
 import Droppable from './Droppable';
 
-function Spread() {
-  const [parent, setParent] = useState<UniqueIdentifier | null>(null);
-  const draggable = <Draggable id="draggable">Go ahead, drag me.</Draggable>;
+interface SpreadProps {
+  past: Card[];
+  present: Card[];
+  future: Card[];
+}
 
+function Spread({ past, present, future }: SpreadProps) {
   return (
     <div className="flex flex-row gap-x-4">
-      <DndContext onDragEnd={handleDragEnd}>
-        {!parent ? draggable : null}
-        <Droppable id="droppable">{parent === 'droppable' ? draggable : 'Drop here'}</Droppable>
-        <Droppable id="droppable1">{parent === 'droppable1' ? draggable : 'Drop here'}</Droppable>
-        <Droppable id="droppable2">{parent === 'droppable2' ? draggable : 'Drop here'}</Droppable>
-      </DndContext>
+      <Droppable id="threeCardPast" className="flex flex-col w-60 border-1">
+        {past.map((card) => (
+          <Draggable key={card.name} id={card.name}>
+            {card.name}
+          </Draggable>
+        ))}
+      </Droppable>
+      <Droppable id="threeCardPresent" className="flex flex-col w-60 border-1">
+        {present.map((card) => (
+          <Draggable key={card.name} id={card.name}>
+            {card.name}
+          </Draggable>
+        ))}
+      </Droppable>
+      <Droppable id="threeCardFuture" className="flex flex-col w-60 border-1">
+        {future.map((card) => (
+          <Draggable key={card.name} id={card.name}>
+            {card.name}
+          </Draggable>
+        ))}
+      </Droppable>
     </div>
   );
-
-  function handleDragEnd(event: DragEndEvent) {
-    const { over } = event;
-    setParent(over ? over.id : null);
-  }
 }
 
 export default Spread;

@@ -52,7 +52,7 @@ function Test() {
       <div style={{ display: 'flex', gap: '20px' }}>
         <Droppable id="drop">
           <p>Drop 1</p>
-          {containers['drop'].map((id) => (
+          {containers.drop.map((id) => (
             <Draggable key={id} id={id}>
               {id}
             </Draggable>
@@ -60,7 +60,7 @@ function Test() {
         </Droppable>
         <Droppable id="drop1">
           <p>Drop 2</p>
-          {containers['drop1'].map((id) => (
+          {containers.drop1.map((id) => (
             <Draggable key={id} id={id}>
               {id}
             </Draggable>
@@ -68,7 +68,7 @@ function Test() {
         </Droppable>
         <Droppable id="drop2">
           <p>Drop 3</p>
-          {containers['drop2'].map((id) => (
+          {containers.drop2.map((id) => (
             <Draggable key={id} id={id}>
               {id}
             </Draggable>
