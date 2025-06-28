@@ -3,7 +3,7 @@ import {
   type DragEndEvent,
   DragOverlay,
   type DragStartEvent,
-  closestCenter,
+  rectIntersection,
 } from '@dnd-kit/core';
 import type { Card } from '@shared/types';
 import { useEffect, useState } from 'react';
@@ -13,6 +13,7 @@ import Spread from './components/Spreads/Spread';
 
 const SpreadCardsMap = new Map<string, string[]>([
   ['oneCard', ['major', 'minor', 'oneCardChosen']],
+  ['twoCardCross', ['major', 'minor', 'twoCardSituation', 'twoCardChallenge']],
   ['threeCard', ['major', 'minor', 'threeCardPast', 'threeCardPresent', 'threeCardFuture']],
 ]);
 
@@ -119,7 +120,7 @@ function App() {
       <span>Tarot AI</span>
       <div className="grid grid-cols-5 gap-4 h-[50%]">
         <DndContext
-          collisionDetection={closestCenter}
+          collisionDetection={rectIntersection}
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
         >

@@ -1,5 +1,6 @@
 const spreads = [
   { type: 'oneCard', name: 'One Card' },
+  { type: 'twoCardCross', name: 'Two Card Cross' },
   { type: 'threeCard', name: 'Three Card' },
   { type: 'horseShoe', name: 'Horseshoe' },
   { type: 'celticCross', name: 'Celtic Cross' },
