@@ -103,6 +103,9 @@ function App() {
     const activeId = String(active.id);
     const overId = String(over.id);
     const allowedDrops = restrictions[activeId];
+    if (!allowedDrops) {
+      return;
+    }
     if (!allowedDrops.includes(overId)) {
       return;
     }
@@ -146,9 +149,20 @@ function App() {
     }
   };
 
+  const handleSubmit = async () => {
+    const response = await fetch('/api/readings/threeCard', {
+      method: 'POST',
+    });
+    const data = await response.json();
+    console.log(data);
+  };
+
   return (
     <div className="flex flex-col h-screen items-center justify-around">
       <span>Tarot AI</span>
+      <button type="button" onClick={handleSubmit}>
+        Test
+      </button>
       <div className="grid grid-cols-5 gap-4 h-[50%]">
         <DndContext
           collisionDetection={rectIntersection}
