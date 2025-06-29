@@ -29,6 +29,23 @@ const SpreadCardsMap = new Map<string, string[]>([
       'horseShoeOutcome',
     ],
   ],
+  [
+    'celticCross',
+    [
+      'major',
+      'minor',
+      'celticCrossPresent',
+      'celticCrossChallenge',
+      'celticCrossPast',
+      'celticCrossFuture',
+      'celticCrossGoal',
+      'celticCrossSubconscious',
+      'celticCrossAdvice',
+      'celticCrossInfluence',
+      'celticCrossHopesAndFears',
+      'celticCrossOutcome',
+    ],
+  ],
 ]);
 
 const updateDropZones = (cards: Card[], zones: string[]) => {
