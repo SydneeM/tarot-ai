@@ -14,7 +14,7 @@ interface HorseShoeProps {
 
 function HorseShoe({ past, present, influence, querent, others, advice, outcome }: HorseShoeProps) {
   return (
-    <div className="grid grid-cols-7 grid-rows-4 gap-4 mx-auto text-white text-center h-full w-full border-2">
+    <div className="grid grid-cols-[85px_85px_85px_85px_85px_85px_85px] grid-rows-4 gap-x-2 mx-auto h-full w-fit border-2 text-xs">
       <Droppable id="horseShoePast" className="col-start-1 row-start-1 border-1">
         {past && <Draggable id={past.name}>{past.name}</Draggable>}
       </Droppable>
