@@ -5,11 +5,13 @@ import {
   type DragStartEvent,
   rectIntersection,
 } from '@dnd-kit/core';
-import type { Card } from '@shared/types';
+import type { Card, CardPosition } from '@shared/types';
 import { useEffect, useState } from 'react';
 import CardContainer from './components/CardContainer';
 import SpreadOptions from './components/SpreadOptions';
 import Spread from './components/Spreads/Spread';
+
+const NON_SPREAD_DROPZONES = 2;
 
 const SpreadCardsMap = new Map<string, string[]>([
   ['oneCard', ['major', 'minor', 'oneCardChosen']],
@@ -77,6 +79,7 @@ function App() {
   const [dropZoneIds, setDropZoneIds] = useState<string[]>([]);
   const [dropZones, setDropZones] = useState<Record<string, Card[]>>({});
   const [restrictions, setRestrictions] = useState<Record<string, string[]>>({});
+  const [cardChoices, setCardChoices] = useState<CardPosition[]>([]);
 
   useEffect(() => {
     const initialize = async () => {
@@ -113,10 +116,29 @@ function App() {
       return;
     }
 
+    setCardChoices((prev) => {
+      let newCardPositions: CardPosition[] = [...prev];
+
+      if (overId === 'major' || overId === 'minor') {
+        const cardRemoved = newCardPositions.some((item) => item.card.name === activeId);
+        if (cardRemoved && activeCard) {
+          newCardPositions = newCardPositions.filter((item) => item.card.name !== activeId);
+        }
+      } else {
+        const cardInSpread = newCardPositions.some((item) => item.position === overId);
+        const curCardPosition = newCardPositions.find((item) => item.position === overId);
+        if (cardInSpread && curCardPosition && activeCard) {
+          curCardPosition.card = activeCard;
+        } else if (!cardInSpread && activeCard) {
+          newCardPositions.push({ position: overId, card: activeCard });
+        }
+      }
+
+      return newCardPositions;
+    });
+
     setDropZones((prev) => {
-      const newDropZones: Record<string, Card[]> = {
-        ...prev,
-      };
+      const newDropZones: Record<string, Card[]> = { ...prev };
 
       for (const key of dropZoneIds) {
         newDropZones[key] = newDropZones[key].filter((card) => card.name !== activeId);
@@ -144,17 +166,27 @@ function App() {
           zones.filter((zone) => zone !== 'major' && zone !== 'minor')
         )
       );
+      setCardChoices([]);
     } else {
       console.log('Invalid spread');
     }
   };
 
   const handleSubmit = async () => {
-    const response = await fetch('/api/readings/threeCard', {
-      method: 'POST',
-    });
-    const data = await response.json();
-    console.log(data);
+    console.log(cardChoices);
+    const dropZoneOptions = SpreadCardsMap.get(spreadType);
+    if (dropZoneOptions) {
+      if (cardChoices.length === dropZoneOptions.length - NON_SPREAD_DROPZONES) {
+        console.log('Spread is complete');
+      } else {
+        console.log('Spread is incomplete');
+      }
+    }
+    // const response = await fetch('/api/readings/threeCard', {
+    //   method: 'POST',
+    // });
+    // const data = await response.json();
+    // console.log(data);
   };
 
   return (

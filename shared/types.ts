@@ -13,3 +13,8 @@ export interface CardData {
   nhits: number;
   cards: Card[];
 }
+
+export interface CardPosition {
+  position: string;
+  card: Card;
+}

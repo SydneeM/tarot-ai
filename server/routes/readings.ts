@@ -28,7 +28,6 @@ router.post('/threeCard', async (_req: Request, res: Response) => {
       input: prompt,
     });
 
-    console.log(response);
     res.json(response);
   } catch {
     res.status(500).json({ error: 'Could not read tarot cards' });
