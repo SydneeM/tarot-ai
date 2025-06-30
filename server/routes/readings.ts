@@ -24,9 +24,10 @@ router.post('/threeCard', async (req: Request, res: Response) => {
     - Future:  ${future.card.name} has meaning ${future.card.meaning_up}
 
     Interpret each card in the context of its position using the provided card names and meanings,
-    and create a narrative story from them. Do not ask follow up questions. Please respond like
-    a sentient AI-based human companion. Do not start the response with words like "certainly",
-    "of course", or any kind of summary to the prompt.
+    and create a narrative story from them. Do not ask follow up questions. Do not start the
+    response with words like "certainly", "of course", or any kind of summary to the prompt. Only
+    return the narrative story, do not return a card by card reading. Please respond like
+    a sentient AI-based human companion in a casual tone.
   `;
 
     const response = await openai.responses.create({
