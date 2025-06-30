@@ -177,16 +177,51 @@ function App() {
     const dropZoneOptions = SpreadCardsMap.get(spreadType);
     if (dropZoneOptions) {
       if (cardChoices.length === dropZoneOptions.length - NON_SPREAD_DROPZONES) {
-        console.log('Spread is complete');
+        let url = '';
+        let validType = false;
+
+        switch (spreadType) {
+          case 'oneCard':
+            validType = true;
+            url = '/api/readings/oneCard';
+            break;
+          case 'twoCardCross':
+            validType = true;
+            url = '/api/readings/twoCardCross';
+            break;
+          case 'threeCard':
+            validType = true;
+            url = '/api/readings/threeCard';
+            break;
+          case 'horseShoe':
+            validType = true;
+            url = '/api/readings/horseShoe';
+            break;
+          case 'celticCross':
+            validType = true;
+            url = '/api/readings/celticCross';
+            break;
+          default:
+            validType = false;
+            console.log('Invalid spread:', spreadType);
+        }
+
+        if (validType) {
+          const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(cardChoices),
+          });
+
+          const data = await response.json();
+          console.log(data.output_text);
+        }
       } else {
         console.log('Spread is incomplete');
       }
     }
-    // const response = await fetch('/api/readings/threeCard', {
-    //   method: 'POST',
-    // });
-    // const data = await response.json();
-    // console.log(data);
   };
 
   return (
