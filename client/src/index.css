@@ -6,7 +6,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: black;
   background-image: url("/map.jpg");
   background-size: 118%;
   background-position: center;
@@ -37,6 +37,6 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #fdfcf4db;
   cursor: pointer;
 }

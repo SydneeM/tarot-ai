@@ -12,9 +12,14 @@ interface SpreadOptionsProps {
 
 function SpreadOptions({ handleSpreadClick }: SpreadOptionsProps) {
   return (
-    <div className="flex flex-row justify-around w-[50%] border-1">
+    <div className="flex flex-row w-[50%] justify-center">
       {spreads.map((spread) => (
-        <button type="button" key={spread.type} onClick={() => handleSpreadClick(spread.type)}>
+        <button
+          type="button"
+          key={spread.type}
+          className="first:rounded-l-md last:rounded-r-md"
+          onClick={() => handleSpreadClick(spread.type)}
+        >
           {spread.name}
         </button>
       ))}
