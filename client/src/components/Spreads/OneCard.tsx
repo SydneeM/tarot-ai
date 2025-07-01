@@ -10,7 +10,11 @@ function OneCard({ chosen }: OneCardProps) {
   return (
     <div className="flex flex-row justify-evenly h-full">
       <Droppable id="oneCardChosen" className="card w-60">
-        {chosen && <Draggable id={chosen.name}>{chosen.name}</Draggable>}
+        {chosen && (
+          <Draggable id={chosen.name} dropId="oneCardChosen">
+            {chosen.name}
+          </Draggable>
+        )}
       </Droppable>
     </div>
   );

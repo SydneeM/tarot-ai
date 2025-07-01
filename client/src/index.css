@@ -37,13 +37,17 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #fdfcf4db;
+  background-color: #fdfcf4ea;
+  /* background-color: #1e2341e6; */
   cursor: pointer;
+}
+button:hover {
+  background-color: white;
 }
 
 .card {
   display: flex;
   flex-direction: column;
   border-radius: 0.375rem;
-  background-color: #00000052;
+  background-color: #0000005f;
 }

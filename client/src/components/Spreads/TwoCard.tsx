@@ -11,13 +11,21 @@ function TwoCardCross({ situation, challenge }: TwoCardCrossProps) {
   return (
     <div className="flex flex-row justify-evenly h-full relative">
       <Droppable id="twoCardSituation" className="card w-60 absolute z-10 h-full">
-        {situation && <Draggable id={situation.name}>{situation.name}</Draggable>}
+        {situation && (
+          <Draggable id={situation.name} dropId="twoCardSituation">
+            {situation.name}
+          </Draggable>
+        )}
       </Droppable>
       <Droppable
         id="twoCardChallenge"
         className="card w-60 absolute z-20 -rotate-90 h-full bg-[#242424] top-16"
       >
-        {challenge && <Draggable id={challenge.name}>{challenge.name}</Draggable>}
+        {challenge && (
+          <Draggable id={challenge.name} dropId="twoCardChallenge">
+            {challenge.name}
+          </Draggable>
+        )}
       </Droppable>
     </div>
   );

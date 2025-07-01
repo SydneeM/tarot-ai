@@ -12,13 +12,25 @@ function ThreeCard({ past, present, future }: ThreeCardProps) {
   return (
     <div className="flex flex-row justify-evenly h-full">
       <Droppable id="threeCardPast" className="card w-60">
-        {past && <Draggable id={past.name}>{past.name}</Draggable>}
+        {past && (
+          <Draggable id={past.name} dropId="threeCardPast">
+            {past.name}
+          </Draggable>
+        )}
       </Droppable>
       <Droppable id="threeCardPresent" className="card w-60">
-        {present && <Draggable id={present.name}>{present.name}</Draggable>}
+        {present && (
+          <Draggable id={present.name} dropId="threeCardPresent">
+            {present.name}
+          </Draggable>
+        )}
       </Droppable>
       <Droppable id="threeCardFuture" className="card w-60">
-        {future && <Draggable id={future.name}>{future.name}</Draggable>}
+        {future && (
+          <Draggable id={future.name} dropId="threeCardFuture">
+            {future.name}
+          </Draggable>
+        )}
       </Droppable>
     </div>
   );
