@@ -236,19 +236,19 @@ function App() {
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
         >
-          <CardContainer cards={dropZones.major} dropZoneId="major" />
+          <CardContainer cards={dropZones.major} name="Major Arcana" dropZoneId="major" />
           <Spread type={spreadType} dropZones={dropZones} />
-          <CardContainer cards={dropZones.minor} dropZoneId="minor" />
+          <CardContainer cards={dropZones.minor} name="Minor Arcana" dropZoneId="minor" />
           <DragOverlay>
             {activeCard ? (
-              <div className="flex flex-col justify-center items-center text-center text-white bg-[#1a1a1a] border border-gray-700 p-3 opacity-75 w-fit">
+              <div className="flex flex-col justify-center items-center text-center text-white bg-[#12344fb0] border-gray-700 border-1 p-3 w-fit rounded-md">
                 {activeCard.name}
               </div>
             ) : null}
           </DragOverlay>
         </DndContext>
       </div>
-      <SpreadOptions handleSpreadClick={handleSpreadClick} />
+      <SpreadOptions name="Card Spreads" handleSpreadClick={handleSpreadClick} />
     </div>
   );
 }
