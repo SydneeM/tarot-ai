@@ -40,3 +40,10 @@ button {
   background-color: #fdfcf4db;
   cursor: pointer;
 }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.375rem;
+  background-color: #00000052;
+}

@@ -9,7 +9,7 @@ interface OneCardProps {
 function OneCard({ chosen }: OneCardProps) {
   return (
     <div className="flex flex-row justify-evenly h-full">
-      <Droppable id="oneCardChosen" className="flex flex-col w-60 border-1">
+      <Droppable id="oneCardChosen" className="card w-60">
         {chosen && <Draggable id={chosen.name}>{chosen.name}</Draggable>}
       </Droppable>
     </div>

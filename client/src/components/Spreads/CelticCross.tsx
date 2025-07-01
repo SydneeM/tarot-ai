@@ -33,40 +33,40 @@ function CelticCross({
         <div className="flex flex-row justify-evenly h-full relative">
           <Droppable
             id="celticCrossPresent"
-            className="flex flex-col w-full border-1 absolute z-10 h-full"
+            className="card w-full absolute z-10 h-full"
           >
             {present && <Draggable id={present.name}>{present.name}</Draggable>}
           </Droppable>
           <Droppable
             id="celticCrossChallenge"
-            className="flex flex-col w-full border-1 absolute z-20 -rotate-90 h-full bg-[#242424] top-4"
+            className="card w-full absolute z-20 -rotate-90 h-full bg-[#242424] top-4"
           >
             {challenge && <Draggable id={challenge.name}>{challenge.name}</Draggable>}
           </Droppable>
         </div>
       </div>
-      <Droppable id="celticCrossPast" className="col-start-1 row-start-3 border-1">
+      <Droppable id="celticCrossPast" className="col-start-1 row-start-3 card">
         {past && <Draggable id={past.name}>{past.name}</Draggable>}
       </Droppable>
-      <Droppable id="celticCrossFuture" className="col-start-3 row-start-3 border-1">
+      <Droppable id="celticCrossFuture" className="col-start-3 row-start-3 card">
         {future && <Draggable id={future.name}>{future.name}</Draggable>}
       </Droppable>
-      <Droppable id="celticCrossGoal" className="col-start-2 row-start-2 border-1">
+      <Droppable id="celticCrossGoal" className="col-start-2 row-start-2 card">
         {goal && <Draggable id={goal.name}>{goal.name}</Draggable>}
       </Droppable>
-      <Droppable id="celticCrossSubconscious" className="col-start-2 row-start-4 border-1">
+      <Droppable id="celticCrossSubconscious" className="col-start-2 row-start-4 card">
         {subconscious && <Draggable id={subconscious.name}>{subconscious.name}</Draggable>}
       </Droppable>
-      <Droppable id="celticCrossAdvice" className="col-start-4 row-start-4 border-1">
+      <Droppable id="celticCrossAdvice" className="col-start-4 row-start-4 card">
         {advice && <Draggable id={advice.name}>{advice.name}</Draggable>}
       </Droppable>
-      <Droppable id="celticCrossInfluence" className="col-start-4 row-start-3 border-1">
+      <Droppable id="celticCrossInfluence" className="col-start-4 row-start-3 card">
         {influence && <Draggable id={influence.name}>{influence.name}</Draggable>}
       </Droppable>
-      <Droppable id="celticCrossHopesAndFears" className="col-start-4 row-start-2 border-1">
+      <Droppable id="celticCrossHopesAndFears" className="col-start-4 row-start-2 card">
         {hopesAndFears && <Draggable id={hopesAndFears.name}>{hopesAndFears.name}</Draggable>}
       </Droppable>
-      <Droppable id="celticCrossOutcome" className="col-start-4 row-start-1 border-1">
+      <Droppable id="celticCrossOutcome" className="col-start-4 row-start-1 card">
         {outcome && <Draggable id={outcome.name}>{outcome.name}</Draggable>}
       </Droppable>
     </div>

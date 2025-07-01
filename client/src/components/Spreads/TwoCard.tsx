@@ -10,12 +10,12 @@ interface TwoCardCrossProps {
 function TwoCardCross({ situation, challenge }: TwoCardCrossProps) {
   return (
     <div className="flex flex-row justify-evenly h-full relative">
-      <Droppable id="twoCardSituation" className="flex flex-col w-60 border-1 absolute z-10 h-full">
+      <Droppable id="twoCardSituation" className="card w-60 absolute z-10 h-full">
         {situation && <Draggable id={situation.name}>{situation.name}</Draggable>}
       </Droppable>
       <Droppable
         id="twoCardChallenge"
-        className="flex flex-col w-60 border-1 absolute z-20 -rotate-90 h-full bg-[#242424]"
+        className="card w-60 absolute z-20 -rotate-90 h-full bg-[#242424] top-16"
       >
         {challenge && <Draggable id={challenge.name}>{challenge.name}</Draggable>}
       </Droppable>

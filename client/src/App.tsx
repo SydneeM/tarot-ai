@@ -241,7 +241,7 @@ function App() {
           <CardContainer cards={dropZones.minor} name="Minor Arcana" dropZoneId="minor" />
           <DragOverlay>
             {activeCard ? (
-              <div className="flex flex-col justify-center items-center text-center text-white bg-[#12344fb0] border-gray-700 border-1 p-3 w-fit rounded-md">
+              <div className="flex flex-col justify-center items-center text-center text-white bg-[#12344fb0] p-3 w-fit rounded-md">
                 {activeCard.name}
               </div>
             ) : null}
