@@ -14,7 +14,7 @@ interface SpreadOptionsProps {
 function SpreadOptions({ name, handleSpreadClick }: SpreadOptionsProps) {
   return (
     <div className="flex flex-col">
-      <span className="label rounded-t-md">{name}</span>
+      <span className="label divider rounded-t-md">{name}</span>
       <div className="flex flex-row justify-center">
         {spreads.map((spread) => (
           <button

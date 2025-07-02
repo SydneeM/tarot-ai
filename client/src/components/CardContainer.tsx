@@ -11,7 +11,7 @@ interface CardContainerProps {
 function CardContainer({ cards, name, dropZoneId }: CardContainerProps) {
   return (
     <Droppable id={dropZoneId} className="flex flex-col overflow-y-auto w-60 rounded-md">
-      <span className="label">{name}</span>
+      <span className="label divider">{name}</span>
       <div className="flex flex-col overflow-y-auto">
         {cards?.map((card) => (
           <Draggable dropId={dropZoneId} key={card.name} id={card.name}>

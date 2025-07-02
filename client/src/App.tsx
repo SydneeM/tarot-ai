@@ -226,9 +226,9 @@ function App() {
 
   return (
     <div className="flex flex-col h-screen items-center justify-around">
-      <span>Tarot AI</span>
-      <button type="button" className="rounded-md" onClick={handleSubmit}>
-        Read
+      <h1>Tarot AI</h1>
+      <button type="button" className="label rounded-md" onClick={handleSubmit}>
+        Read My Cards
       </button>
       <div className="grid grid-cols-5 gap-4 h-[50%]">
         <DndContext
