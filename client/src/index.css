@@ -1,4 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Gabriela&display=swap");
 @import "tailwindcss";
+
+@theme {
+  --font-gabriela: "Gabriela", sans-serif;
+}
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -36,9 +41,7 @@ button {
   padding: 0.75rem;
   font-size: 1em;
   font-weight: 500;
-  font-family: inherit;
   background-color: #fdfcf4ea;
-  /* background-color: #1e2341e6; */
   cursor: pointer;
 }
 button:hover {

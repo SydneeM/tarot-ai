@@ -18,9 +18,9 @@ function Draggable({ id, dropId, children }: DraggableItemProps) {
   const style = {
     height: '100%',
     color: inSpread ? 'white' : '',
-    backgroundColor: inSpread ? '#1e2341e6' : '',
+    backgroundColor: inSpread ? '#1e2341' : '',
     borderWidth: inSpread ? '1px' : '',
-    borderColor: inSpread ? '#0000005f' : '',
+    borderColor: inSpread ? '#1e2341' : '',
     borderRadius: inSpread ? '0.375rem' : '',
   };
 
