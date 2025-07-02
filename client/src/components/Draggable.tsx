@@ -20,7 +20,7 @@ function Draggable({ id, dropId, children }: DraggableItemProps) {
     color: inSpread ? 'white' : '',
     backgroundColor: inSpread ? '#1e2341' : '',
     borderWidth: inSpread ? '1px' : '',
-    borderColor: inSpread ? '#1e2341' : '',
+    borderColor: inSpread ? '#0000005f' : '',
     borderRadius: inSpread ? '0.375rem' : '',
   };
 
