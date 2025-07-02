@@ -15,6 +15,7 @@ function Draggable({ id, dropId, children }: DraggableItemProps) {
 
   const inSpread = dropId !== 'major' && dropId !== 'minor';
 
+  //https://www.sacred-texts.com/tarot/xr/index.htm
   const style = {
     height: '100%',
     color: inSpread ? 'white' : '',
