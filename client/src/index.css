@@ -38,6 +38,7 @@ a:hover {
 h1 {
   font-size: 4.8em;
   line-height: 1.1;
+  color: black;
 }
 
 button {
@@ -74,9 +75,11 @@ button:hover {
 }
 
 #submit {
-  font-size: 2rem;
+  font-size: 1.8rem;
+  font-family: var(--font-cormorant);
+  font-weight: 600;
   padding-top: 0.4rem;
   padding-bottom: 0.4rem;
-  padding-left: 2rem;
-  padding-right: 2rem;
+  padding-left: 1.2rem;
+  padding-right: 1.2rem;
 }
