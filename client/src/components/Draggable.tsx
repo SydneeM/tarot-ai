@@ -21,6 +21,7 @@ function Draggable({ id, dropId, children }: DraggableItemProps) {
     color: inSpread ? 'white' : '',
     backgroundImage: inSpread ? `url(${'/test.jpg'})` : '',
     backgroundPosition: inSpread ? 'center' : '',
+    backgroundSize: inSpread ? 'cover' : '',
     borderWidth: inSpread ? '1px' : '',
     borderColor: inSpread ? '#0000005f' : '',
     borderRadius: inSpread ? '0.375rem' : '',
