@@ -8,6 +8,7 @@ import {
 import type { Card, CardPosition } from '@shared/types';
 import { useEffect, useState } from 'react';
 import CardContainer from './components/CardContainer';
+import Reading from './components/Reading';
 import SpreadOptions from './components/SpreadOptions';
 import Spread from './components/Spreads/Spread';
 
@@ -73,6 +74,8 @@ const updateRestrictions = (myCards: Card[], zones: string[]) => {
 };
 
 function App() {
+  const [reading, setReading] = useState<string>('');
+  const [showReading, setShowReading] = useState<boolean>(false);
   const [cards, setCards] = useState<Card[]>([]);
   const [activeCard, setActiveCard] = useState<Card | null>(null);
   const [spreadType, setSpreadType] = useState<string>('');
@@ -216,12 +219,17 @@ function App() {
           });
 
           const data = await response.json();
-          console.log(data.output_text);
+          setReading(data.output_text);
+          setShowReading(true);
         }
       } else {
         console.log('Spread is incomplete');
       }
     }
+  };
+
+  const handleOpen = (open: boolean) => {
+    setShowReading(open);
   };
 
   return (
@@ -249,6 +257,7 @@ function App() {
         </DndContext>
       </div>
       <SpreadOptions name="Card Spreads" handleSpreadClick={handleSpreadClick} />
+      <Reading data={reading} open={showReading} handleOpen={handleOpen} />
     </div>
   );
 }

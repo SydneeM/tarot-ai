@@ -36,9 +36,11 @@ a:hover {
 }
 
 h1 {
-  font-size: 4.8em;
+  font-size: 5.8rem;
+  font-weight: 300;
   line-height: 1.1;
   color: black;
+  text-shadow: white 1px 0 10px;
 }
 
 button {
