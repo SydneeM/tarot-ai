@@ -6,7 +6,7 @@ export interface Card {
   name_short: string;
   type: string;
   value: string;
-  value_int: 1;
+  value_int: number;
 }
 
 export interface CardData {

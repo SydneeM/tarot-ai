@@ -15,15 +15,14 @@ function Draggable({ id, dropId, children }: DraggableItemProps) {
 
   const inSpread = dropId !== 'major' && dropId !== 'minor';
 
-  //https://www.sacred-texts.com/tarot/xr/index.htm
   const style = {
     height: '100%',
-    color: inSpread ? 'white' : '',
-    backgroundImage: inSpread ? `url(${'/test.jpg'})` : '',
+    color: inSpread ? 'transparent' : '',
+    backgroundImage: inSpread ? `url('/${id.replace(/\s/g, '')}.png')` : '',
     backgroundPosition: inSpread ? 'center' : '',
-    backgroundSize: inSpread ? 'cover' : '',
+    backgroundSize: inSpread ? '100% 100%' : '',
     borderWidth: inSpread ? '1px' : '',
-    borderColor: inSpread ? '#0000005f' : '',
+    // borderColor: inSpread ? '#0000005f' : '',
     borderRadius: inSpread ? '0.375rem' : '',
   };
 
